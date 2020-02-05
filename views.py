@@ -12,7 +12,7 @@ class NotImplementedError(Exception):
 class get_excel(TemplateView):
 
     def add_comment(self):
-        """ Adds one line of comment at the end of the file """
+        """ Adds lines of comment one line after the end of the data """
         return
 
     def get_colum_names(self):
