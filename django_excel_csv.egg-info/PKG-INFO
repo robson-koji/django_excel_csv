@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: django-excel-csv
+Version: 0.1
+Summary: Django app to create csv file. Excel brazilian format and utf-8 compatible.
+Home-page: https://gitlab.com/bv_fapesp/django_excel_csv
+Author: BV FAPESP
+Author-email: rmoriya@fapesp.br
+License: UNKNOWN
+Description: # django_excel_csv
+        
+        Generic Django app to export csv from anywhere. 
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
