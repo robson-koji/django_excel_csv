@@ -9,15 +9,15 @@ class NotImplementedError(Exception):
     pass
 
 
-class get_excel(TemplateView):
+class GetExcel(TemplateView):
 
     def add_comment(self):
         """ Adds lines of comment one line after the end of the data """
         return
 
-    def get_colum_names(self):
+    def get_column_names(self):
         """ column_names = ["col 1", "col 2", "col n"] """
-        raise NotImplementedError('Create get_colum_names method to provide csv headers')
+        raise NotImplementedError('Create get_column_names method to provide csv headers')
 
     def get_data(self):
         """ Data is a list of strings (comma separated). Each string is the row
@@ -27,7 +27,7 @@ class get_excel(TemplateView):
 
     def post(self, request, *args, **kwargs):
             data = self.get_data()
-            column_names = self.get_colum_names()
+            column_names = self.get_column_names()
             column_names = ";".join(cn for cn in column_names)
 
             t = loader.get_template('django_excel_csv/csv.txt')
