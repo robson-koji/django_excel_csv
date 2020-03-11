@@ -10,7 +10,7 @@ class NotImplementedError(Exception):
 
 
 class GetExcel(TemplateView):
-
+    template_name = ""
     def add_comment(self):
         """ Adds lines of comment one line after the end of the data """
         return
@@ -28,7 +28,7 @@ class GetExcel(TemplateView):
     def post(self, request, *args, **kwargs):
             data = self.get_data()
             column_names = self.get_column_names()
-            column_names = ";".join(cn for cn in column_names)
+            column_names = u';'.join(cn for cn in column_names)
 
             t = loader.get_template('django_excel_csv/csv.txt')
 
@@ -36,7 +36,7 @@ class GetExcel(TemplateView):
             Include the BOM (byte order mark) and its done.
             Excel will recognise the output data as UTF-8 encoding.
             """
-            column_names = u'\ufeff'.encode('utf8') + column_names
+            column_names = u'\ufeff' + column_names
 
             c = Context({'column_names': column_names,
                          'data': data,
