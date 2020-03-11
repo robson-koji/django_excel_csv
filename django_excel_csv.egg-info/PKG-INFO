@@ -1,7 +1,7 @@
 Metadata-Version: 1.1
 Name: django-excel-csv
-Version: 0.1
-Summary: Django app to create csv file. Excel brazilian format and utf-8 compatible.
+Version: 0.2
+Summary: Django app to create csv file. Excel semicolon separator format and utf-8 compatible.
 Home-page: https://gitlab.com/bv_fapesp/django_excel_csv
 Author: BV FAPESP
 Author-email: rmoriya@fapesp.br
@@ -9,6 +9,14 @@ License: UNKNOWN
 Description: # django_excel_csv
         
         Generic Django app to export csv from anywhere. 
+        
+        
+        Add to your requirements file on your Django project:
+        -e git+https://gitlab.com/bv_fapesp/django_excel_csv#egg=django_excel_csv
+        
+        Or directly install with pip:
+        pip install git+https://gitlab.com/bv_fapesp/django_excel_csv#egg=django_excel_csv
+        
         
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 2.7
