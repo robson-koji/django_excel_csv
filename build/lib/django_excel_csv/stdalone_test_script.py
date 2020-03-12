@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
 import sys
+import os
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+
 
 try:
     import django
@@ -12,12 +15,16 @@ try:
                 "ENGINE": "django.db.backends.mysql",
             }
         },
-        # ROOT_URLCONF="tests.urls",
         INSTALLED_APPS=[
-            "django_excel_csv",
         ],
         NOSE_ARGS=['-s'],
+
+        TEMPLATE_DIRS = (
+            os.path.join(SETTINGS_PATH, 'templates'),
+        )
     )
+
+    # import pdb; pdb.set_trace()
     django.setup()
 
     from django_nose import NoseTestSuiteRunner
