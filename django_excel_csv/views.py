@@ -8,9 +8,10 @@ import json
 class NotImplementedError(Exception):
     pass
 
-
+import os
 class GetExcel(TemplateView):
-    template_name = ""
+    template_name = ''
+    is_ajax = False
     def add_comment(self):
         """ Adds lines of comment one line after the end of the data """
         return
