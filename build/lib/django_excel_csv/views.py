@@ -8,9 +8,10 @@ import json
 class NotImplementedError(Exception):
     pass
 
-
+import os
 class GetExcel(TemplateView):
-    template_name = ""
+    template_name = ''
+    is_ajax = False
     def add_comment(self):
         """ Adds lines of comment one line after the end of the data """
         return
@@ -26,7 +27,6 @@ class GetExcel(TemplateView):
         raise NotImplementedError('Create get_data method to provide csv data')
 
     def post(self, request, *args, **kwargs):
-        asdf
             data = self.get_data()
             column_names = self.get_column_names()
             column_names = u';'.join(cn for cn in column_names)

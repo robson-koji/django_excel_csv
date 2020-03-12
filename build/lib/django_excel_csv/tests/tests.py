@@ -3,15 +3,15 @@ from django.test import TestCase, RequestFactory
 from ..views import GetExcel
 
 
-class TestAll(TestCase):
+class TestGeneric(TestCase):
+    """ Test all except post method """
     @classmethod
     def setUpClass(cls):
-        super(TestAll, cls).setUpClass()
+        super(TestGeneric, cls).setUpClass()
         cls.factory = RequestFactory()
         cls.request = cls.factory.get('/')
         cls.response = GetExcel.as_view()(cls.request)
 
-    #"""
     def test_status_code(self):
         self.assertEqual(self.response.status_code, 200)
 
@@ -23,23 +23,39 @@ class TestAll(TestCase):
 
     def test_add_comment(self):
         self.assertIsNone(self.response.context_data['view'].add_comment())
-    #"""
 
 
-    # Testar o post passando dados dummy para os metodos. get_data, get_column_names
+class TestPostMethod(TestCase):
+    """ Test post method of the TemplateView Class """
 
-    def test_post_method(self):
-        get_excel_obj = self.response.context_data['view']
-        def new_get_data():
-            return [1,2,3]
+    @classmethod
+    def setUpClass(cls):
+        """ Main targe here is to call the post method """
+        super(TestPostMethod, cls).setUpClass()
+        cls.factory = RequestFactory()
+        cls.request = cls.factory.get('/')
+        cls.response = GetExcel.as_view()(cls.request)
 
-        def new_get_column_names():
+        # Get the view
+        get_excel_obj = cls.response.context_data['view']
+
+        # Create methods with dummy data to patch the view
+        def dummy_get_data():
+            return ["1,2,3", "4,5,6", "7,8,9"]
+
+        def dummy_get_column_names():
             return ['a','b','c']
 
-        get_excel_obj.get_data = new_get_data
-        get_excel_obj.get_column_names = new_get_column_names
+        # Patch class instance with dummy methods
+        get_excel_obj.get_data = dummy_get_data
+        get_excel_obj.get_column_names = dummy_get_column_names
 
+        # Call post method
+        cls.post_response = get_excel_obj.post(cls.request)
 
-        post = self.response.context_data['view'].post(self.request)
+    def test_post_response_200(self):
+        self.assertEqual(self.post_response.status_code, 200)
 
-        import pdb; pdb.set_trace()
+    def test_post_response_content(self):
+        # import pdb; pdb.set_trace()
+        self.assertIn(b'1,2,3', self.post_response.content )
