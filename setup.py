@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
      name='django_excel_csv',
-     version='0.3',
+     version='0.4',
 #     scripts=['django_excel_csv'] ,
      author="BV FAPESP",
      author_email="rmoriya@fapesp.br",
