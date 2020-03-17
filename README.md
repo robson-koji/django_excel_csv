@@ -48,3 +48,8 @@ For default test_settings.py, database is set dummy, which raises an ImproperlyC
 You can set your database engine (Postgres, MySQL, sqlite3...)
  
 
+## CSV with Javascript
+Use this snipet to deliver your CSV using Javascript
+
+
+https://gitlab.com/bv_fapesp/django_excel_csv/snippets/1954292.js
