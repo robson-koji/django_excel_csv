@@ -39,10 +39,11 @@ class GetExcel(TemplateView):
             """
             column_names = u'\ufeff' + column_names
 
-            c = Context({'column_names': column_names,
+            dict_data = {'column_names': column_names,
                          'data': data,
                          'comment': self.add_comment()
-                        })
+                        }
+            c = Context(dict_data)
 
             if self.is_ajax:
                 """
@@ -61,5 +62,9 @@ class GetExcel(TemplateView):
                 """
                 response = HttpResponse(content_type='text/csv')
                 response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
-                response.write(t.render(c))
+                try:
+                    response.write(t.render(c))
+                except TypeError:
+                    response.write(dict_data)
+
                 return response
