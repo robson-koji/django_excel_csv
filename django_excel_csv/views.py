@@ -65,6 +65,6 @@ class GetExcel(TemplateView):
                 try:
                     response.write(t.render(c))
                 except TypeError:
-                    response.write(dict_data)
+                    response.write(t.render(dict_data))
 
                 return response
