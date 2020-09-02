@@ -49,7 +49,11 @@ class GetExcel(TemplateView):
                 """
                 Retorna JSON para Ajax, que monta o csv no front.
                 """
-                csv = t.render(c)
+                try:
+                    csv = t.render(c)
+                except TypeError:
+                    csv = t.render(dict_data)
+
                 response_data = {}
                 response_data['csv'] = csv
                 response_data['message'] = "Any message to AJAX"
