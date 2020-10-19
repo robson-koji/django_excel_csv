@@ -25,6 +25,8 @@ Ajax and regular browser request compatible
 **Or directly install with pip**
 * pip install git+https://gitlab.com/bv_fapesp/django_excel_csv#egg=django_excel_csv
 
+**Template**
+You have to copy the template to a directory in your Django project.
 
 
 ## Before you use
